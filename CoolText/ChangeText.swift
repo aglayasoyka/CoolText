@@ -11,11 +11,18 @@ import Foundation
 func change(text: String) -> String{
     let rules = ["a":"@","i":"1","s":"$", "o":"0","t":"+",
                  "A":"@","I":"1","S":"$", "O":"0", "T":"+"]
-    var text = text
-    for rule in rules {
-        text = text.replacingOccurrences(of: rule.key , with: rule.value )
+    var result = ""
+    for letter in text{
+        guard let rule = (rules[letter.description]) else{
+            result.append(contentsOf: letter.description)
+            continue
+        }
+        
+        result.append(contentsOf: rule)
     }
-    print(text)
-    return text
+    
+    
+    print(result)
+    return result
 }
 
